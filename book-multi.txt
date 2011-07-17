@@ -1,49 +1,12 @@
-Multi-Part Book Title Goes Here
+Backbone Trainer
 ===============================
-Author's Name
-v1.0, 2003-12
+Suhair Hassan E
+v0.1, 2011-07
 :doctype: book
 
 
-[dedication]
-Example Dedication
-==================
-The optional dedication goes here.
-
-This document is an AsciiDoc multi-part book skeleton containing
-briefly annotated element placeholders plus a couple of example index
-entries and footnotes. Books are normally used to generate DocBook
-markup and the preface, appendix, bibliography, glossary and index
-section titles are significant ('specialsections').
-
-NOTE: Multi-part books differ from all other AsciiDoc document formats
-in that top level sections (dedication, preface, book parts,
-appendices, bibliography, glossary, index) must be level zero headings
-(not level one).
-
-
-[preface]
-Example Preface
-================
-The optional book preface goes here at section level zero.
-
-Preface Sub-section
-~~~~~~~~~~~~~~~~~~~
-NOTE: Preface and appendix subsections start out of sequence at level
-2 (level 1 is skipped). This only applies to multi-part book
-documents.
-
-
-
-The First Part of the Book
+Backbone Walkthrough
 ==========================
-
-[partintro]
-.Optional part introduction title
---
-Optional part introduction goes here.
---
-
 Model and View
 --------------
 Backbone is developed around the MVC paradigm and it is logical to get started with the Model itself. Model encapsulates the domain data and logic. Let's dive into backbone by creating the infamous ToDo model.
@@ -97,6 +60,10 @@ Here is the console's out put.
 image::images/console_todo_blueprint_info.jpg[Model blue print output in Firebug]
 
 So the ToDo variable we have is just a constructor function and it could be used for creating our todo objects.
+
+Creating a ToDo object
+~~~~~~~~~~~~~~~~~~~~~~
+
 Let's create a todo object and explore it in console.
 
 .Creating a ToDo object
@@ -117,138 +84,26 @@ $(function(){
 .ToDo Object in Firebug 
 image::images/console_todo_object_info.jpg[ToDo object output in Firebug]
 
-We can interpret from the Firebug output that, extending from the Backbone's Model has paid off and our brand new todo object has got a few properties and methods as a reward. 
+We can interpret from the Firebug output that, extending from the Backbone's Model has paid off and our brand new todo object has got a few properties and methods as a reward. From the output, it is obvious that the attributes property of the todo object is empty and the next step is to provide the default values for the todo attributes.
 
-Chapters can be grouped by preceeding them with a level 0 Book Part
-title.
+Provide deafult attribute values for the todo object
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+So far we have created only a single todo object. It is currently in blank state and our task is to provide default values for the todo object. One option is to provide the default values in the ToDo prototype and all of the new todo objects will have those defaults. Backbone model has a defaults property just for this purpose.
 
-chapters are at level 1 and can contain sub-sections nested up to
-three deep.
-footnote:[An example footnote.]
-indexterm:[Example index entry]
-
-It's also worth noting that a book part can have it's own preface,
-bibliography, glossary and index. Chapters can have their own
-bibliography, glossary and index.
-
-And now for something completely different: ((monkeys)), lions and
-tigers (Bengal and Siberian) using the alternative syntax index
-entries.
-(((Big cats,Lions)))
-(((Big cats,Tigers,Bengal Tiger)))
-(((Big cats,Tigers,Siberian Tiger)))
-Note that multi-entry terms generate separate index entries.
-
-Here are a couple of image examples: an image:images/smallnew.png[]
-example inline image followed by an example block image:
-
-.Tiger block image
-image::images/tiger.png[Tiger image]
-
-Followed by an example table:
-
-.An example table
-[width="60%",options="header"]
-|==============================================
-| Option          | Description
-| -a 'USER GROUP' | Add 'USER' to 'GROUP'.
-| -R 'GROUP'      | Disables access to 'GROUP'.
-|==============================================
-
-.An example example
-===============================================
-Lorum ipum...
-===============================================
-
-[[X1]]
-Sub-section with Anchor
-~~~~~~~~~~~~~~~~~~~~~~~
-Sub-section at level 2.
-
-Chapter Sub-section
-^^^^^^^^^^^^^^^^^^^
-Sub-section at level 3.
-
-Chapter Sub-section
-+++++++++++++++++++
-Sub-section at level 4.
-
-This is the maximum sub-section depth supported by the distributed
-AsciiDoc configuration.
-footnote:[A second example footnote.]
+.Providing default attributes for the model
+----------------------------------------------------------------------------
+var ToDo = Backbone.Model.extend({
+    defaults: {
+        content: "What do you want to do?", <1>
+        order: 0, <2>
+        done: false <3>
+    }        
+});
+----------------------------------------------------------------------------
+<1> The instructions of the todo object
+<2> The priority order of the todo object
+<3> Current status of the todo object, whether it is completed or not.
 
 
-The Second Chapter
-------------------
-An example link to anchor at start of the <<X1,first sub-section>>.
-indexterm:[Second example index entry]
-
-An example link to a bibliography entry <<taoup>>.
-
-
-
-The Second Part of the Book
-===========================
-
-The First Chapter of the Second Part
-------------------------------------
-Chapters grouped into book parts are at level 1 and can contain
-sub-sections.
-
-
-
-:numbered!:
-
-[appendix]
-Example Appendix
-================
-One or more optional appendixes go here at section level zero.
-
-Appendix Sub-section
-~~~~~~~~~~~~~~~~~~~
-NOTE: Preface and appendix subsections start out of sequence at level
-2 (level 1 is skipped).  This only applies to multi-part book
-documents.
-
-
-
-[bibliography]
-Example Bibliography
-====================
-The bibliography list is a style of AsciiDoc bulleted list.
-
-[bibliography]
-- [[[taoup]]] Eric Steven Raymond. 'The Art of Unix
-  Programming'. Addison-Wesley. ISBN 0-13-142901-9.
-- [[[walsh-muellner]]] Norman Walsh & Leonard Muellner.
-  'DocBook - The Definitive Guide'. O'Reilly & Associates. 1999.
-  ISBN 1-56592-580-7.
-
-
-[glossary]
-Example Glossary
-================
-Glossaries are optional. Glossaries entries are an example of a style
-of AsciiDoc labeled lists.
-
-[glossary]
-A glossary term::
-  The corresponding (indented) definition.
-
-A second glossary term::
-  The corresponding (indented) definition.
-
-
-[colophon]
-Example Colophon
-================
-Text at the end of a book describing facts about its production.
-
-
-[index]
-Example Index
-=============
-////////////////////////////////////////////////////////////////
-The index is normally left completely empty, it's contents are
-generated automatically by the DocBook toolchain.
-////////////////////////////////////////////////////////////////
+.todo object with default attributes
+image::images/console_todo_model_defaults.png[todo object default attributes in Firebug]

@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
 <meta name="generator" content="AsciiDoc 8.6.3" />
-<title>Multi-Part Book Title Goes Here</title>
+<title></title>
 <style type="text/css">
 /* Sans-serif font. */
 h1, h2, h3, h4, h5, h6,
@@ -397,7 +397,7 @@ div.toclevel4 {
 </style>
 <script type="text/javascript">
 /*<![CDATA[*/
-window.onload = function(){asciidoc.footnotes();}
+window.onload = function(){asciidoc.footnotes(); asciidoc.toc(2);}
 var asciidoc = {  // Namespace.
 
 /////////////////////////////////////////////////////////////////////
@@ -529,60 +529,21 @@ footnotes: function () {
 /*]]>*/
 </script>
 </head>
-<body class="book">
+<body class="article">
 <div id="header">
-<h1>Multi-Part Book Title Goes Here</h1>
-<span id="author">Author's Name</span><br />
-<span id="revnumber">version 1.0,</span>
-<span id="revdate">2003-12</span>
+<div id="toc">
+  <div id="toctitle">Table of Contents</div>
+  <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
+</div>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="_example_dedication">Example Dedication</h2>
-<div class="sectionbody">
-<div class="paragraph"><p>The optional dedication goes here.</p></div>
-<div class="paragraph"><p>This document is an AsciiDoc multi-part book skeleton containing
-briefly annotated element placeholders plus a couple of example index
-entries and footnotes. Books are normally used to generate DocBook
-markup and the preface, appendix, bibliography, glossary and index
-section titles are significant (<em>specialsections</em>).</p></div>
-<div class="admonitionblock">
-<table><tr>
-<td class="icon">
-<img src="./images/icons/note.png" alt="Note" />
-</td>
-<td class="content">Multi-part books differ from all other AsciiDoc document formats
-in that top level sections (dedication, preface, book parts,
-appendices, bibliography, glossary, index) must be level zero headings
-(not level one).</td>
-</tr></table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_example_preface">Example Preface</h2>
-<div class="sectionbody">
-<div class="paragraph"><p>The optional book preface goes here at section level zero.</p></div>
-<div class="sect2">
-<h3 id="_preface_sub_section">Preface Sub-section</h3>
-<div class="admonitionblock">
-<table><tr>
-<td class="icon">
-<img src="./images/icons/note.png" alt="Note" />
-</td>
-<td class="content">Preface and appendix subsections start out of sequence at level
-2 (level 1 is skipped). This only applies to multi-part book
-documents.</td>
-</tr></table>
-</div>
-</div>
-</div>
-</div>
-<h1 id="_the_first_part_of_the_book">The First Part of the Book</h1>
-<div class="openblock">
-<div class="title">Optional part introduction title</div>
+<div class="paragraph"><p>Backbone Trainer</p></div>
+<div class="exampleblock">
 <div class="content">
-<div class="paragraph"><p>Optional part introduction goes here.</p></div>
+<div class="paragraph"><p>Suhair Hassan E
+v0.1, 2011-07
+:doctype: book</p></div>
+<div class="paragraph"><p>Backbone Walkthrough</p></div>
 </div></div>
 <div class="sect1">
 <h2 id="_model_and_view">Model and View</h2>
@@ -652,8 +613,11 @@ Let&#8217;s dump this blueprint to the firebug&#8217;s console so that we can ha
 </div>
 <div class="title">Figure 1. ToDo Model in Firebug</div>
 </div>
-<div class="paragraph"><p>So the ToDo variable we have is just a constructor function and it could be used for creating our todo objects.
-Let&#8217;s create a todo object and explore it in console.</p></div>
+<div class="paragraph"><p>So the ToDo variable we have is just a constructor function and it could be used for creating our todo objects.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_creating_a_todo_object">Creating a ToDo object</h3>
+<div class="paragraph"><p>Let&#8217;s create a todo object and explore it in console.</p></div>
 <div class="listingblock">
 <div class="title">Creating a ToDo object</div>
 <div class="content">
@@ -681,179 +645,47 @@ Dump the created object to the console
 </div>
 <div class="title">Figure 2. ToDo Object in Firebug</div>
 </div>
-<div class="paragraph"><p>We can interpret from the Firebug output that, extending from the Backbone&#8217;s Model has paid off and our brand new todo object has got a few properties and methods as a reward.</p></div>
-<div class="paragraph"><p>Chapters can be grouped by preceeding them with a level 0 Book Part
-title.</p></div>
-<div class="paragraph"><p>chapters are at level 1 and can contain sub-sections nested up to
-three deep.
-<span class="footnote"><br />[An example footnote.]<br /></span></p></div>
-<div class="paragraph"><p>It&#8217;s also worth noting that a book part can have it&#8217;s own preface,
-bibliography, glossary and index. Chapters can have their own
-bibliography, glossary and index.</p></div>
-<div class="paragraph"><p>And now for something completely different: monkeys, lions and
-tigers (Bengal and Siberian) using the alternative syntax index
-entries.
-
-
-
-Note that multi-entry terms generate separate index entries.</p></div>
-<div class="paragraph"><p>Here are a couple of image examples: an <span class="image">
-<img src="images/smallnew.png" alt="images/smallnew.png" />
-</span>
-example inline image followed by an example block image:</p></div>
+<div class="paragraph"><p>We can interpret from the Firebug output that, extending from the Backbone&#8217;s Model has paid off and our brand new todo object has got a few properties and methods as a reward. From the output, it is obvious that the attributes property of the todo object is empty and the next step is to provide the default values for the todo attributes.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_provide_deafult_attribute_values_for_the_todo_object">Provide deafult attribute values for the todo object</h3>
+<div class="paragraph"><p>So far we have created only a single todo object. It is currently in blank state and our task is to provide default values for the todo object. One option is to provide the default values in the ToDo prototype and all of the new todo objects will have those defaults. Backbone model has a defaults property just for this purpose.</p></div>
+<div class="listingblock">
+<div class="title">Providing default attributes for the model</div>
+<div class="content">
+<pre><tt>var ToDo = Backbone.Model.extend({
+    defaults: {
+        content: "What do you want to do?", <img src="./images/icons/callouts/1.png" alt="1" />
+        order: 0, <img src="./images/icons/callouts/2.png" alt="2" />
+        done: false <img src="./images/icons/callouts/3.png" alt="3" />
+    }
+});</tt></pre>
+</div></div>
+<div class="colist arabic"><table>
+<tr><td><img src="./images/icons/callouts/1.png" alt="1" /></td><td>
+The instructions of the todo object
+</td></tr>
+<tr><td><img src="./images/icons/callouts/2.png" alt="2" /></td><td>
+The priority order of the todo object
+</td></tr>
+<tr><td><img src="./images/icons/callouts/3.png" alt="3" /></td><td>
+Current status of the todo object, whether it is completed or not.
+</td></tr>
+</table></div>
 <div class="imageblock">
 <div class="content">
-<img src="images/tiger.png" alt="Tiger image" />
+<img src="images/console_todo_model_defaults.png" alt="todo object default attributes in Firebug" />
 </div>
-<div class="title">Figure 3. Tiger block image</div>
-</div>
-<div class="paragraph"><p>Followed by an example table:</p></div>
-<div class="tableblock">
-<table rules="all"
-width="60%"
-frame="border"
-cellspacing="0" cellpadding="4">
-<caption class="title">Table 1. An example table</caption>
-<col width="50%" />
-<col width="50%" />
-<thead>
-<tr>
-<th align="left" valign="top"> Option          </th>
-<th align="left" valign="top"> Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left" valign="top"><p class="table">-a <em>USER GROUP</em></p></td>
-<td align="left" valign="top"><p class="table">Add <em>USER</em> to <em>GROUP</em>.</p></td>
-</tr>
-<tr>
-<td align="left" valign="top"><p class="table">-R <em>GROUP</em></p></td>
-<td align="left" valign="top"><p class="table">Disables access to <em>GROUP</em>.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="exampleblock">
-<div class="title">Example 1. An example example</div>
-<div class="content">
-<div class="paragraph"><p>Lorum ipum&#8230;</p></div>
-</div></div>
-</div>
-<div class="sect2">
-<h3 id="X1">Sub-section with Anchor</h3>
-<div class="paragraph"><p>Sub-section at level 2.</p></div>
-<div class="sect3">
-<h4 id="_chapter_sub_section">Chapter Sub-section</h4>
-<div class="paragraph"><p>Sub-section at level 3.</p></div>
-<div class="sect4">
-<h5 id="_chapter_sub_section_2">Chapter Sub-section</h5>
-<div class="paragraph"><p>Sub-section at level 4.</p></div>
-<div class="paragraph"><p>This is the maximum sub-section depth supported by the distributed
-AsciiDoc configuration.
-<span class="footnote"><br />[A second example footnote.]<br /></span></p></div>
+<div class="title">Figure 3. todo object with default attributes</div>
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_the_second_chapter">The Second Chapter</h2>
-<div class="sectionbody">
-<div class="paragraph"><p>An example link to anchor at start of the <a href="#X1">first sub-section</a>.</p></div>
-<div class="paragraph"><p>An example link to a bibliography entry <a href="#taoup">[taoup]</a>.</p></div>
-</div>
-</div>
-<h1 id="_the_second_part_of_the_book">The Second Part of the Book</h1>
-<div class="sect1">
-<h2 id="_the_first_chapter_of_the_second_part">The First Chapter of the Second Part</h2>
-<div class="sectionbody">
-<div class="paragraph"><p>Chapters grouped into book parts are at level 1 and can contain
-sub-sections.</p></div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_example_appendix">Appendix A: Example Appendix</h2>
-<div class="sectionbody">
-<div class="paragraph"><p>One or more optional appendixes go here at section level zero.</p></div>
-<div class="sect2">
-<h3 id="_appendix_sub_section">Appendix Sub-section</h3>
-<div class="admonitionblock">
-<table><tr>
-<td class="icon">
-<img src="./images/icons/note.png" alt="Note" />
-</td>
-<td class="content">Preface and appendix subsections start out of sequence at level
-2 (level 1 is skipped).  This only applies to multi-part book
-documents.</td>
-</tr></table>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_example_bibliography">Example Bibliography</h2>
-<div class="sectionbody">
-<div class="paragraph"><p>The bibliography list is a style of AsciiDoc bulleted list.</p></div>
-<div class="ulist bibliography"><ul>
-<li>
-<p>
-<a id="taoup"></a>[taoup] Eric Steven Raymond. <em>The Art of Unix
-  Programming</em>. Addison-Wesley. ISBN 0-13-142901-9.
-</p>
-</li>
-<li>
-<p>
-<a id="walsh-muellner"></a>[walsh-muellner] Norman Walsh &amp; Leonard Muellner.
-  <em>DocBook - The Definitive Guide</em>. O&#8217;Reilly &amp; Associates. 1999.
-  ISBN 1-56592-580-7.
-</p>
-</li>
-</ul></div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_example_glossary">Example Glossary</h2>
-<div class="sectionbody">
-<div class="paragraph"><p>Glossaries are optional. Glossaries entries are an example of a style
-of AsciiDoc labeled lists.</p></div>
-<div class="dlist glossary"><dl>
-<dt>
-A glossary term
-</dt>
-<dd>
-<p>
-  The corresponding (indented) definition.
-</p>
-</dd>
-<dt>
-A second glossary term
-</dt>
-<dd>
-<p>
-  The corresponding (indented) definition.
-</p>
-</dd>
-</dl></div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_example_colophon">Example Colophon</h2>
-<div class="sectionbody">
-<div class="paragraph"><p>Text at the end of a book describing facts about its production.</p></div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_example_index">Example Index</h2>
-<div class="sectionbody">
 </div>
 </div>
 </div>
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0<br />
-Last updated 2011-07-16 16:31:18 IST
+Last updated 2011-07-17 15:18:27 IST
 </div>
 </div>
 </body>
